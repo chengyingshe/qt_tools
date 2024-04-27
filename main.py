@@ -15,6 +15,7 @@ class MainWindow(QMainWindow):
         self.input_path = None
         self.output_dir = None
         self.df_data = None
+        self.data_has_nan = False
         self.set_ui()
         self.__init_widgets()
         self.__bind_all_functions()
@@ -24,10 +25,12 @@ class MainWindow(QMainWindow):
         loadUi(ui_path, self)
 
     def __init_widgets(self):
-        pass
+        self.hasNanLabel.setVisible(False)
+        self.dataFillType.setEnabled(False)
+        self.dataFillBtn.setEnabled(False)
+
 
     def select_input_path_dialog(self, event):
-        # TODO: 选择导入csv文件
         options = QFileDialog.Options()
         path, _ = QFileDialog.getOpenFileName(self,
                                               "选择导入文件",
@@ -39,6 +42,27 @@ class MainWindow(QMainWindow):
             self.inputPathEdit.setText(path)
             self.input_path = path
             self.df_data = pd.read_csv(self.input_path)
+            self.__check_df_data_if_has_nan()
+
+    def __check_df_data_if_has_nan(self):
+        if self.df_data is None or self.df_data.isnull().values.any():
+            print('数据中存在缺失值')
+            self.dataFillType.setEnabled(True)
+            self.dataFillBtn.setEnabled(True)
+            self.hasNanLabel.setVisible(True)
+        else:
+            self.dataFillType.setEnabled(False)
+            self.dataFillBtn.setEnabled(False)
+            self.hasNanLabel.setVisible(False)
+
+    def fill_data(self):
+        # TODO: 填充缺失值
+        if self.dataFillType.currentText() == '平均数':
+            pass
+        elif self.dataFillType.currentText() == '中位数':
+            pass
+        elif self.dataFillType.currentText() == '众数':
+            pass
 
     def select_output_dir_dialog(self, event):
         # TODO: 选择导出文件夹路径
@@ -50,6 +74,9 @@ class MainWindow(QMainWindow):
             print(f"selected dir: {directory}")
             self.outputDirEdit.setText(directory)
             self.output_dir = directory
+            output_path = os.path.join(self.output_dir, os.path.basename(self.input_path))
+            self.df_data.to_csv(output_path, index=False)
+            print(f'成功导出文件：{output_path}')
 
 
     def visualize(self):
