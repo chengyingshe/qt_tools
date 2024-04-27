@@ -1,18 +1,20 @@
+from enum import Enum
+from typing import List
 import pandas as pd
+
+class ProcessType(Enum):
+    AVERAGE = 1  # 平均数
+    MEDIAN = 2  # 中位数
+    MODE = 3  # 众数
 
 class Preprocessor:
     """数据预处理类"""
-    def __init__(self, df_data: pd.DataFrame):
-        self.data = df_data  # 处理前的数据
-        self.processed_data = None  # 处理后的数据
-
-    def process_col(self, col_name, type) -> None:
-        """处理单列数据：填充缺失值
-        
-        Keyword arguments:
-        col_name -- 指定列名
-        type -- 处理方式
-        Return: None（需要对processed_data进行修改）
-        """
-        
-        pass
+    def process(self, df_data: pd.DataFrame, type: ProcessType):
+        if type == ProcessType.AVERAGE:
+            fill_val = df_data.mean()
+        elif type == ProcessType.MEDIAN:
+            fill_val = df_data.median()
+        else:
+            fill_val = df_data.mode()
+        return df_data.fillna(fill_val)
+    
