@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>412</width>
-    <height>331</height>
+    <width>725</width>
+    <height>647</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,67 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>371</width>
-      <height>251</height>
+      <x>10</x>
+      <y>10</y>
+      <width>701</width>
+      <height>591</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="1" colspan="3">
+      <widget class="QLineEdit" name="inputPathEdit"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>数据预测</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>数据导出</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>预测个数：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1" colspan="3">
+      <widget class="QListWidget" name="corrList">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>80</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="hasNanLabel">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: red;</string>
+       </property>
+       <property name="text">
+        <string>存在缺失值！</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="3">
+      <widget class="QPushButton" name="outputBtn">
+       <property name="text">
+        <string>导出</string>
+       </property>
+      </widget>
+     </item>
      <item row="3" column="3">
       <widget class="QPushButton" name="dataFillBtn">
        <property name="enabled">
@@ -31,6 +85,41 @@
        </property>
        <property name="text">
         <string>确认</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>填充类型：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>相关系数：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>文件选择：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>表格预览：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>可视化</string>
        </property>
       </widget>
      </item>
@@ -53,17 +142,14 @@
        </item>
       </widget>
      </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_7">
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>预测个数：</string>
+        <string>导出路径：</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1" colspan="3">
-      <widget class="QLineEdit" name="inputPathEdit"/>
-     </item>
-     <item row="5" column="0" colspan="4">
+     <item row="6" column="0" colspan="4">
       <widget class="QPushButton" name="visualizeBtn">
        <property name="text">
         <string>可视化图表</string>
@@ -77,19 +163,8 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>数据导出</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>填充类型：</string>
-       </property>
-      </widget>
+     <item row="5" column="1" colspan="3">
+      <widget class="QTableWidget" name="dataTable"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_4">
@@ -98,64 +173,23 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>数据预测</string>
-       </property>
-      </widget>
+     <item row="11" column="1" colspan="2">
+      <widget class="QLineEdit" name="outputDirEdit"/>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>文件选择：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="3">
+     <item row="9" column="3">
       <widget class="QPushButton" name="predictBtn">
        <property name="text">
         <string>预测</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="1" colspan="2">
-      <widget class="QLineEdit" name="predictNumEdit"/>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>可视化</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>导出路径：</string>
-       </property>
-      </widget>
-     </item>
      <item row="9" column="1" colspan="2">
-      <widget class="QLineEdit" name="outputDirEdit"/>
-     </item>
-     <item row="9" column="3">
-      <widget class="QPushButton" name="outputBtn">
-       <property name="text">
-        <string>导出</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="hasNanLabel">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: red;</string>
-       </property>
-       <property name="text">
-        <string>存在缺失值！</string>
+      <widget class="QLineEdit" name="predictNumEdit">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -167,7 +201,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>412</width>
+     <width>725</width>
      <height>22</height>
     </rect>
    </property>
