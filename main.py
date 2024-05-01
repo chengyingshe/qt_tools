@@ -98,12 +98,13 @@ class MainWindow(QMainWindow):
             elif self.dataFillType.currentText() == '中位数':
                 fill_val = self.df_data.median()
             elif self.dataFillType.currentText() == '众数':
-                fill_val = self.df_data.mode()
+                fill_val = self.df_data.mode().iloc[0, :]
             self.filled_df_data = self.df_data.fillna(fill_val)
+            print(f'填充数据：\n{fill_val}')
             self.data_has_nan = False
             self.hasNanLabel.setVisible(False)
-            self.show_data()
             print(f'利用数据特征【{self.dataFillType.currentText()}】填充成功！')
+            self.show_data()
 
     def select_output_dir_dialog(self, event):
         directory = QFileDialog.getExistingDirectory(self, 
