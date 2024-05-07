@@ -7,7 +7,7 @@ from PyQt5.uic import loadUi
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import pandas as pd
-from chart import ChartWindow
+from chart import ChartWindow, plot_type_map
 import numpy as np
 from predictor import Predictor
 
@@ -29,9 +29,17 @@ class MainWindow(QMainWindow):
         ui_path = os.path.join(self.cur_dir, 'gui.ui')
         loadUi(ui_path, self)
 
+    def update_selected_col_name_combo(self):
+        if self.df_data is not None:
+            if self.selectedColName.count() > 0: self.selectedColName.clear()
+            self.selectedColName.addItems(self.df_data.columns.values)
+        else:
+            self.selectedColName.clear()
+
     def __init_widgets(self):
         self.hasNanLabel.setVisible(False)
-        self.predictNumEdit.setValidator(QIntValidator())  # 设置进能输入整数
+        self.predictNumEdit.setValidator(QIntValidator())  # 设置仅能输入整数
+        self.selectedGraphType.addItems(list(plot_type_map.values()))
 
     def select_input_path_dialog(self, event):
         options = QFileDialog.Options()
@@ -48,6 +56,7 @@ class MainWindow(QMainWindow):
             self.filled_df_data = self.df_data
             self.__check_df_data_if_has_nan()
             self.show_data()
+            self.update_selected_col_name_combo()
 
     def show_data(self):
         if self.df_data is not None:
@@ -127,11 +136,15 @@ class MainWindow(QMainWindow):
             print(f'成功导出文件：{output_path}')
 
     def visualize(self):
-        if self.df_data is not None and not self.data_has_nan:
+        if self.df_data is not None:
             # print('可视化数据：')
             # print(self.filled_df_data)
-            self.chart_window = ChartWindow(self.filled_df_data)
-            self.chart_window.show()
+            self.chart_window = ChartWindow()
+            col_data = self.filled_df_data[self.selectedColName.currentText()]
+            plot_type = self.selectedGraphType.currentIndex()
+            # print('col_data', col_data)
+            # print('plot_type', plot_type)
+            self.chart_window.plot_and_show(col_data, plot_type)
         else:
             print('未导入CSV文件或数据存在缺失，无法可视化')
 

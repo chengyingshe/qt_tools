@@ -24,37 +24,79 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="1" colspan="3">
-      <widget class="QLineEdit" name="inputPathEdit"/>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>文件选择：</string>
+       </property>
+      </widget>
      </item>
-     <item row="7" column="0">
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>填充类型：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>表格预览：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
         <string>数据预测</string>
        </property>
       </widget>
      </item>
-     <item row="10" column="0">
+     <item row="3" column="3">
+      <widget class="QPushButton" name="dataFillBtn">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>确认</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
       <widget class="QLabel" name="label_8">
        <property name="text">
         <string>数据导出</string>
        </property>
       </widget>
      </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="label_7">
+     <item row="7" column="0" colspan="4">
+      <widget class="QPushButton" name="visualizeBtn">
        <property name="text">
-        <string>预测个数：</string>
+        <string>可视化图表</string>
        </property>
       </widget>
      </item>
-     <item row="8" column="1" colspan="3">
-      <widget class="QListWidget" name="corrList">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>数据补全</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1" colspan="2">
+      <widget class="QLineEdit" name="predictNumEdit">
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>80</height>
+         <height>16777215</height>
         </size>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>相关系数：</string>
        </property>
       </widget>
      </item>
@@ -71,48 +113,20 @@
        </property>
       </widget>
      </item>
-     <item row="11" column="3">
+     <item row="12" column="3">
       <widget class="QPushButton" name="outputBtn">
        <property name="text">
         <string>导出</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="3">
-      <widget class="QPushButton" name="dataFillBtn">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string>确认</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>填充类型：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>相关系数：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>文件选择：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>表格预览：</string>
+     <item row="9" column="1" colspan="3">
+      <widget class="QListWidget" name="corrList">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>80</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -142,17 +156,10 @@
        </item>
       </widget>
      </item>
-     <item row="11" column="0">
-      <widget class="QLabel" name="label_9">
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>导出路径：</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0" colspan="4">
-      <widget class="QPushButton" name="visualizeBtn">
-       <property name="text">
-        <string>可视化图表</string>
+        <string>预测个数：</string>
        </property>
       </widget>
      </item>
@@ -163,33 +170,58 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1" colspan="3">
-      <widget class="QTableWidget" name="dataTable"/>
+     <item row="12" column="1" colspan="2">
+      <widget class="QLineEdit" name="outputDirEdit"/>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_4">
+     <item row="1" column="1" colspan="3">
+      <widget class="QLineEdit" name="inputPathEdit"/>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>数据补全</string>
+        <string>导出路径：</string>
        </property>
       </widget>
      </item>
-     <item row="11" column="1" colspan="2">
-      <widget class="QLineEdit" name="outputDirEdit"/>
+     <item row="5" column="1" colspan="3">
+      <widget class="QTableWidget" name="dataTable"/>
      </item>
-     <item row="9" column="3">
+     <item row="10" column="3">
       <widget class="QPushButton" name="predictBtn">
        <property name="text">
         <string>预测</string>
        </property>
       </widget>
      </item>
-     <item row="9" column="1" colspan="2">
-      <widget class="QLineEdit" name="predictNumEdit">
+     <item row="6" column="1">
+      <widget class="QComboBox" name="selectedColName"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_12">
        <property name="maximumSize">
         <size>
          <width>16777215</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="text">
+        <string>选择绘制数据：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QComboBox" name="selectedGraphType"/>
+     </item>
+     <item row="6" column="2">
+      <widget class="QLabel" name="label_13">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>选择图表种类：</string>
        </property>
       </widget>
      </item>
